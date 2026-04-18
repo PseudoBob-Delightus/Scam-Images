@@ -7,4 +7,4 @@ Can recommend using something like [ImageHash (python)](https://pypi.org/project
 
 If you lack the ability to post a PR, please send the images to: spam-images@excessive.space
 
-<img width="910" height="1118" alt="image" src="https://github.com/user-attachments/assets/c9906e97-127f-4928-b8d0-bd39fa867c55" />
+<img width="500" height="auto" alt="image" src="https://github.com/user-attachments/assets/c9906e97-127f-4928-b8d0-bd39fa867c55" />
