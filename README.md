@@ -6,3 +6,5 @@ I accept PRs with new images. Please use the format (d/m/yyyy) for the folder an
 Can recommend using something like [ImageHash (python)](https://pypi.org/project/ImageHash/) for comparing images. A hamming distance of ~4 should account for JPG compression without catching unrelated things.
 
 If you lack the ability to post a PR, please send the images to: spam-images@excessive.space
+
+<img width="500" height="auto" alt="image" src="https://github.com/user-attachments/assets/c9906e97-127f-4928-b8d0-bd39fa867c55" />
