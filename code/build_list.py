@@ -17,6 +17,15 @@ def get_phash(filename: str) -> str:
     finally:
         return output
 
+def rem_collisions(hashes: list) -> list:
+    for hash1 in deepcopy(hashes):
+        for hash2 in deepcopy(hashes):
+            if hash1 == hash2:
+                continue
+            if hamming_distance(hash1, hash2) < 4:
+                hashes.remove(hash1)
+                break
+    return hashes
 
 def main() -> None:
     hashes: list = []
@@ -27,13 +36,7 @@ def main() -> None:
     print(f"Pre-dupe-removal:   {len(hashes)}")
     hashes = list(set(hashes))  # Remove dupes
     print(f"Post-dupe-removal:  {len(hashes)}")
-    for hash1 in deepcopy(hashes):
-        for hash2 in deepcopy(hashes):
-            if hash1 == hash2:
-                continue
-            if hamming_distance(hash1, hash2) < 4:
-                hashes.remove(hash1)
-                break
+    hashes = rem_collisions(hashes)
     print(f"Post-hamming-clear: {len(hashes)}")
     hash_string = '","'.join(hashes)
     print(f'["{hash_string}"]')
