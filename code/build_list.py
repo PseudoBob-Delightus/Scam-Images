@@ -50,7 +50,7 @@ def main() -> None:
     print(f"Pre-dupe-removal:   {len(hashes)}")
     hashes = list(set(hashes))  # Remove dupes
     print(f"Post-dupe-removal:  {len(hashes)}")
-    hashes = rem_collisions(hashes)
+    hashes = rem_collisions(hashes) # Remove collisions < 4 hamming distance
     print(f"Post-hamming-clear: {len(hashes)}")
     hash_string = '","'.join(hashes)
     print(f'["{hash_string}"]')
