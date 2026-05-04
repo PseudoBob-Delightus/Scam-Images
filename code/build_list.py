@@ -1,7 +1,9 @@
 import glob
 import json
+from copy import deepcopy
 
 import imagehash
+from hamming import hamming_distance
 from PIL import Image
 
 # Generates a list of hashes based on a folder "scam_images" with a list of folders containing images within it.
@@ -23,7 +25,17 @@ def main() -> None:
     for target in list_:  # Build list
         if hash := get_phash(target):
             hashes.append(hash)
+    print(f"Pre-dupe-removal:   {len(hashes)}")
     hashes = list(set(hashes))  # Remove dupes
+    print(f"Post-dupe-removal:  {len(hashes)}")
+    for hash1 in deepcopy(hashes):
+        for hash2 in deepcopy(hashes):
+            if hash1 == hash2:
+                continue
+            if hamming_distance(hash1, hash2) < 4:
+                hashes.remove(hash1)
+                break
+    print(f"Post-hamming-clear: {len(hashes)}")
     hash_string = '","'.join(hashes)
     print(f'["{hash_string}"]')
     with open("hashes.json", "w") as hash_file:
