@@ -23,8 +23,8 @@ def main() -> None:
     list_ = glob.glob(r"./*/*")
     print(list_)
     for target in list_:  # Build list
-        if hash := get_phash(target):
-            hashes.append(hash)
+        if phash := get_phash(target):
+            hashes.append(phash)
     print(f"Pre-dupe-removal:   {len(hashes)}")
     hashes = list(set(hashes))  # Remove dupes
     print(f"Post-dupe-removal:  {len(hashes)}")
