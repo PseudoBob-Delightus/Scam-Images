@@ -37,7 +37,7 @@ def main() -> None:
     print(f"Post-hamming-clear: {len(hashes)}")
     hash_string = '","'.join(hashes)
     print(f'["{hash_string}"]')
-    with open("hashes.json", "w") as hash_file:
+    with open("../hashes.json", "w") as hash_file:
         json.dump(hashes, hash_file, ensure_ascii=False, indent=4)
 
 
