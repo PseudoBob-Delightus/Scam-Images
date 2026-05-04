@@ -19,10 +19,9 @@ def get_phash(filename: str) -> str:
 
 
 def main() -> None:
-    hashes = []
-    list_ = glob.glob(r"./*/*")
-    print(list_)
-    for target in list_:  # Build list
+    hashes: list = []
+    file_list = glob.glob(r"../*/*")
+    for target in file_list:  # Build list
         if phash := get_phash(target):
             hashes.append(phash)
     print(f"Pre-dupe-removal:   {len(hashes)}")
