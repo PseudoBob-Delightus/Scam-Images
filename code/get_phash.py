@@ -1,6 +1,6 @@
 import imagehash
 from PIL import Image
-# Generating a pHash using Imagehash library and PIL
+# Generating a pHash using imagehash library and PIL
 
 
 def get_phash(filename: str) -> str:    
