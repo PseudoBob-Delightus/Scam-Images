@@ -7,4 +7,21 @@ Can recommend using something like [ImageHash (python)](https://pypi.org/project
 
 If you lack the ability to post a PR, please send the images to: spam-images@excessive.space
 
+An API endpoint has been set up: `https://api.excessive.space/v1/hashcompare?hash=<64char_hash`
+
+This will return json with either a `result` or `error` key. 
+
+A `result` of `true` indicates a match to within 4 hamming distance of a scam image. `false` indicates it is outside this range.
+
+An `error` (and a 400 response) will explain what was wrong.
+
+Using the test image: https://api.excessive.space/v1/hashcompare?hash=bbac1388cc534c6133166616c8f9d0193e6c36e5d3072f9994f9ccf63f823336
+
+Will return a 200: 
+```
+{
+  "result": true
+}
+```
+
 <img width="500" height="auto" alt="image" src="https://github.com/user-attachments/assets/c9906e97-127f-4928-b8d0-bd39fa867c55" />
