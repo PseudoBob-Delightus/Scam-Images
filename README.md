@@ -24,4 +24,13 @@ Will return a 200:
 }
 ```
 
+Using an altered (non-matching) hash: https://api.excessive.space/v1/hashcompare?hash=bbac1388cc534c6133166616c8f9d0193e6c36e5d3072f9994f9ccf63f823300
+
+Will return a 404:
+```
+{
+  "result": false
+}
+```
+
 <img width="500" height="auto" alt="image" src="https://github.com/user-attachments/assets/c9906e97-127f-4928-b8d0-bd39fa867c55" />
