@@ -47,6 +47,7 @@ def get_hashes() -> list[str]:
 
 def main() -> None:
     hashes: list = get_hashes()
+    hashes.sort()
     print(f"Pre-dupe-removal:   {len(hashes)}")
     hashes = list(set(hashes))  # Remove dupes
     print(f"Post-dupe-removal:  {len(hashes)}")
