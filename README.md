@@ -7,7 +7,7 @@ Can recommend using something like [ImageHash (python)](https://pypi.org/project
 
 If you lack the ability to post a PR, please send the images to: spam-images@excessive.space
 
-An API endpoint has been set up: `https://api.excessive.space/v1/hashcompare?hash=<64char_hash`
+An API endpoint has been set up: `https://api.excessive.space/v1/hashcompare?hash=<64char_hash>`
 
 This will return json with either a `result` or `error` key. 
 
