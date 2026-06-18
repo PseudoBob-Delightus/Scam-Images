@@ -34,3 +34,8 @@ Will return a 404:
 ```
 
 <img width="500" height="auto" alt="image" src="https://github.com/user-attachments/assets/c9906e97-127f-4928-b8d0-bd39fa867c55" />
+
+
+Projects using this data:
+- https://github.com/SomewhatDamaged/SentryBot
+- https://github.com/SomewhatDamaged/hashcompare
