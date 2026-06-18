@@ -13,7 +13,7 @@ This will return json with either a `result` or `error` key.
 
 A `result` of `true` indicates a match to within 4 hamming distance of a scam image. `false` indicates it is outside this range.
 
-An `error` (and a 400 response) will explain what was wrong.
+An `error` (and a 500 response) will explain what was wrong.
 
 Using the test image: https://api.excessive.space/v1/hashcompare?hash=bbac1388cc534c6133166616c8f9d0193e6c36e5d3072f9994f9ccf63f823336
 
