@@ -58,6 +58,13 @@ def main() -> None:
     hash_string = '","'.join(hashes)
     print(f'["{hash_string}"]')
     hashes.sort()
+    try:
+        with open("../hashes.json", "r") as hash_file:
+            old_hashes = json.load(hash_file)
+        print(f"Old hashes\nCount: {len(old_hashes)}\nList: {old_hashes}")
+        print(f"New hashes\nCount: {len(hashes)}\nList: {hashes}")
+    except OSError:
+        old_hashes = []
     with open("../hashes.json", "w") as hash_file:
         json.dump(hashes, hash_file, ensure_ascii=False, indent=4)
 
