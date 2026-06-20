@@ -61,8 +61,10 @@ def main() -> None:
     try:
         with open("../hashes.json", "r") as hash_file:
             old_hashes = json.load(hash_file)
-        print(f"Old hashes\nCount: {len(old_hashes)}\nList: {old_hashes}")
-        print(f"New hashes\nCount: {len(hashes)}\nList: {hashes}")
+        hash_string = '","'.join(old_hashes)
+        print(f"Old hashes\nCount: {len(old_hashes)}\nList: [\"{hash_string}\"]")
+        hash_string = '","'.join(hashes)
+        print(f"New hashes\nCount: {len(hashes)}\nList: [\"{hash_string}\"]")
     except OSError:
         old_hashes = []
     with open("../hashes.json", "w") as hash_file:
