@@ -3,8 +3,12 @@ import json
 from copy import deepcopy
 
 import imagehash
+from cloudflare.resources.url_scanner import responses
+
 from hamming import hamming_distance
 from PIL import Image
+import os
+from cloudflare import Cloudflare
 
 
 # Generates a list of hashes based on a folder "scam_images" with a list of folders containing images within it.
@@ -57,18 +61,34 @@ def main() -> None:
     print(f"Post-hamming-clear: {len(hashes)}")
     hash_string = '","'.join(hashes)
     print(f'["{hash_string}"]')
+    hash_string = f'["{hash_string}"]'
     hashes.sort()
     try:
         with open("../hashes.json", "r") as hash_file:
             old_hashes = json.load(hash_file)
-        hash_string = '","'.join(old_hashes)
-        print(f"Old hashes\nCount: {len(old_hashes)}\nList: [\"{hash_string}\"]")
-        hash_string = '","'.join(hashes)
-        print(f"New hashes\nCount: {len(hashes)}\nList: [\"{hash_string}\"]")
+        old_hash_string = '","'.join(old_hashes)
+        print(f"Old hashes\nCount: {len(old_hashes)}\nList: [\"{old_hash_string}\"]")
+        print(f"New hashes\nCount: {len(hashes)}\nList: {hash_string}")
     except OSError:
         old_hashes = []
     with open("../hashes.json", "w") as hash_file:
         json.dump(hashes, hash_file, ensure_ascii=False, indent=4)
+    if not os.path.exists("../.kv_config.json"):
+        print("No .kv_config.json file")
+        return
+    if not hash_string:
+        print("No hash string")
+        return
+    if len(old_hashes) >= len(hashes):
+        print("Hash string is same or smaller.")
+        return
+    with open("../.kv_config.json", "r") as kv_config_file:
+        kv_config = json.load(kv_config_file)
+    client = Cloudflare(api_token=kv_config["CLOUDFLARE_API_TOKEN"])
+    response = client.kv.namespaces.values.update(key_name=kv_config["KV_PAIR"], namespace_id=kv_config["NAMESPACE_ID"], value=hash_string.encode('utf-8'), account_id=kv_config["ACCOUNT_ID"])
+    print("Cloudflare kv updated!")
+    if response:
+        print(f"Response: {response}")
 
 
 if __name__ == "__main__":
