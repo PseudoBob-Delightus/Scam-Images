@@ -3,7 +3,6 @@ import json
 from copy import deepcopy
 
 import imagehash
-from cloudflare.resources.url_scanner import responses
 
 from hamming import hamming_distance
 from PIL import Image
