@@ -9,6 +9,8 @@ If you lack the ability to post a PR, please send the images to: spam-images@exc
 
 An API endpoint has been set up: 
 
+---------
+
 Simple endpoint: `https://api.excessive.space/v1/hashcompare?hash=<64char_hash>`
 
 This will return json with either a `result` or `error` key. 
@@ -35,6 +37,8 @@ Will return a 404:
 }
 ```
 
+--------
+
 Complex endpoint: `https://api.excessive.space/v1/scamscore?hash=<64char_hash>&dimensions=<width>,<height>`
 
 This will return json with either a `result` or `error` key. 
@@ -47,7 +51,10 @@ A `result` > `0` indicates a possible match of a scam image. `0` indicates defin
 - `3-4` — match within about 8 hamming distance and/or with larger dimention ratio difference
 - `1-2` — match within about 10 hamming distance and/or with large dimention ratio difference
 - `0` — match is outside 10 hamming distance and/or with a huge ratio difference (also denoted by a `404` being returned)
+
 I would recommend counting anything 4+ as being a hit.
+
+--------
 
 <img width="500" height="auto" alt="image" src="https://github.com/user-attachments/assets/c9906e97-127f-4928-b8d0-bd39fa867c55" />
 
