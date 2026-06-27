@@ -91,19 +91,22 @@ def main() -> None:
         with open("../hashes.json", "r") as hash_file:
             old_hashes = json.load(hash_file)
         old_hash_string = json.dumps(old_hashes, ensure_ascii=False, indent=None)
-        with open("../hashes_and_dimensions.json", "r") as hash_file:
-            old_hashes_and_dimensions = json.load(hash_file)
-        old_hashes_and_dimensions_string = json.dumps(old_hashes_and_dimensions, ensure_ascii=False, indent=None)
         print(f"Old hashes\nCount: {len(old_hashes)} List: [\"{old_hash_string}\"]")
         print(f"New hashes\nCount: {len(hashes)} List: {hash_string}")
-        print(f"Old old_hashes_and_dimensions\nCount: {len(old_hashes_and_dimensions)} List: {old_hashes_and_dimensions_string}")
-        print(f"New old_hashes_and_dimensions\nCount: {len(hashes_and_dimensions)} List: {hashes_and_dimensions_string}")
     except OSError:
         old_hashes = []
-        old_hashes_and_dimensions = []
     finally:
         with open("../hashes.json", "w") as hash_file:
             json.dump(hashes, hash_file, ensure_ascii=False, indent=4)
+    try:
+        with open("../hashes_and_dimensions.json", "r") as hash_file:
+            old_hashes_and_dimensions = json.load(hash_file)
+        old_hashes_and_dimensions_string = json.dumps(old_hashes_and_dimensions, ensure_ascii=False, indent=None)
+        print(f"Old old_hashes_and_dimensions\nCount: {len(old_hashes_and_dimensions)} List: {old_hashes_and_dimensions_string}")
+        print(f"New old_hashes_and_dimensions\nCount: {len(hashes_and_dimensions)} List: {hashes_and_dimensions_string}")
+    except OSError:
+        old_hashes_and_dimensions = []
+    finally:
         with open("../hashes_and_dimensions.json", "w") as hash_file:
             json.dump(hashes_and_dimensions, hash_file, ensure_ascii=False, indent=4)
     if not os.path.exists("../.kv_config.json"):
