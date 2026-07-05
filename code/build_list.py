@@ -1,4 +1,3 @@
-import copy
 import glob
 import json
 from copy import deepcopy
