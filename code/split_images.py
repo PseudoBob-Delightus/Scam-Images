@@ -23,7 +23,6 @@ def split_two_images(image: BytesIO) -> list[BytesIO]:
         best_relative_cut = np.argmax(brightness_gradients)
         cut_x = start_col + best_relative_cut
         crops = [img[0:height, 0:cut_x], img[0:height, cut_x:width]]
-        output: list[BytesIO] = []
         for crop in crops:
             out_image = cv2.imencode(".png", crop)[1].tobytes()
             output.append(BytesIO(out_image))

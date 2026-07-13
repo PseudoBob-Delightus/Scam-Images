@@ -18,8 +18,6 @@ from cloudflare import Cloudflare
 
 
 def get_phash_and_dimensions(filename: str) -> list[tuple[str, tuple]]:
-    phash: str = ""
-    dimensions: tuple[int, int] = (0,0)
     output: list[tuple[str, tuple]] = []
     try:
         img = Image.open(filename)
